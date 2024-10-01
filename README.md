@@ -31,6 +31,10 @@
 Zod is a typescript schema validation library.
 >[Code Sample](./src/schema/signupSchema.ts)
 
+## Points for TypeScript
+
+1. `type` is use to declare a new type, just like a interface in Java (defines a structure without implementation). [Code Sample](./src/lib/dbConnect.ts)
+
 ## Extra Key Points
 
 1. **Identifier** is a term used in production for unique values used in credentials like, username, email, etc.
