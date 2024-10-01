@@ -23,3 +23,14 @@
         match: [regex (/.+\@.+\..+/), Message("Please provide a valid email address")]
     }
  ```
+
+>[Code Sample](./src/model/User.ts)
+
+## Zod
+
+Zod is a typescript schema validation library.
+>[Code Sample](./src/schema/signupSchema.ts)
+
+## Extra Key Points
+
+1. **Identifier** is a term used in production for unique values used in credentials like, username, email, etc.
