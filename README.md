@@ -1,6 +1,8 @@
 # next-js
 
-## Mongoose
+## Chai aur code
+
+### Mongoose
 
 1. `Document` in mongoose in use for type validation.
 2. We can create a Mongoose Schema with type validation in such a way,
@@ -26,15 +28,30 @@
 
 >[Code Sample](./src/model/User.ts)
 
-## Zod
+### Zod
 
 Zod is a typescript schema validation library.
 >[Code Sample](./src/schema/signupSchema.ts)
 
-## Points for TypeScript
+### Points for TypeScript
 
 1. `type` is use to declare a new type, just like a interface in Java (defines a structure without implementation). [Code Sample](./src/lib/dbConnect.ts)
 
-## Extra Key Points
+### Extra Key Points
 
 1. **Identifier** is a term used in production for unique values used in credentials like, username, email, etc.
+
+## Programming with Mosh
+
+### How to install nextjs
+
+1. `npx create-next-app@latest`.
+2. Name of project or `.` if want to use the name of your current directory name.
+3. Typescript? Recommended: Yes
+4. ESLint? (A tool that tells common errors like syntax, formatting, etc.) - Recommended: Yes
+5. Tailwind? Recommended: Yes
+6. src directory? Recommended: Yes
+7. App router? Recommended: Yes
+8. alias? Recommended: No
+
+> These steps could be changed or replaced based on its version
