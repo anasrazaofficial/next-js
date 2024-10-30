@@ -67,6 +67,25 @@ Zod is a typescript schema validation library.
 ### Client-side rendering
 
 - Everything in nextjs is rendered on server side to lower the load. But if we add javascript in it. It gives an error telling us to render that on client side. To get rid of this error, we need to add `'user client';` on the top of the file.
-- For this approach we can create a component for these type of rendering
+- For this approach we can create a component for these type of rendering.
 
 > Just like [this](./programming-with-mosh/my-first-app/src/app/components/ProductCard.jsx).
+
+### Caching
+
+- Storing data somewhere that is faster to access. Time duration series for getting data: network > file system > memory.
+- NextJs has a built-in data cache. When we fetch anything nextjs stores it in cache data, so next time we will hit the same API or URL, it gets from cache data.
+- But if the data changes frequently, we need data from network. To do that we can pass second argument as:
+  - `{ cache: "no-store" }`: When data changes frequently.
+  - `{ next: { revalidate: 10 } }`: NextJs will fetch data every 10 seconds (a background process).
+
+> Warning: This caching data is only supported in `fetch` function. If we use any library like `axios`, we will not be able to access the cache data.\
+ Demo: [Users.jsx](./programming-with-mosh/my-first-app/src/app/users/page.jsx)
+
+### Static Vs Dynamic Rendering
+
+- Static Rendering means rendering data at once at build time, while dynamic rendering occurs at request time.
+- If caching is enabled then nextjs will consider static rendering as default.
+- To test it, you can show date, build and run it.
+
+> It'll not work on development environment, that's why we need to build it first.
