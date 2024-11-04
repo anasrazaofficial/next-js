@@ -89,3 +89,77 @@ Zod is a typescript schema validation library.
 - To test it, you can show date, build and run it.
 
 > It'll not work on development environment, that's why we need to build it first.
+
+## JavaScript Mastery
+
+### Dynamic Routing
+
+To handle dynamic routing, we need to name of folder in square brackets, i.e.
+
+```Shell
+└── app/
+    ├── product/
+    │    ├── page.js
+    │    └── [productId] # folder name
+    │        └── page.js
+```
+
+In this example, app contains a folder named product and inside it, there's a folder [productId] which is the slug in routes,\
+`https://example.com/products/:productId`.
+Inside this file, we can also access the slug easily by just writing it.
+
+```jsx
+const page = () => {
+  return (
+    <div>{productId}</div>
+  )
+}
+export default page
+```
+
+### Data Fetching
+
+There are 3 types of data fetching in Nextjs:
+
+1. **Server Side Rendering (SSR)**: Data is fetched from the server everytime, `{ cache: "no-store" }`.
+2. **Static Site Generation (SSG)**: 1st time when API is called data is fetched from the server & stored in the cache. Then it'll get that data from cache. Ideal for content that doesn't change frequently. **Default** fetching in Next.js.
+3. **Incremental Site Generation (ISG)**: Data fetched & stored in cache, but will re-fetched after a certain time. `{ next: { revalidate: n(seconds) } }`.
+
+### Creating a Google App for OAuth
+
+1. Go to [console.cloud.google.com](https://console.cloud.google.com/)
+2. Click on the current selected project and create new project, for eg: `my-app`
+3. Select new `my-app`
+4. Open sidebar and click on **APIs & Services** > **OAuth consent screen**
+5. Enter **App name** & **User supported email**
+6. Enter **Developer contact information (email)**
+7. Click **Save and Continue**
+8. Go to **Credentials** tab
+9. Click on **Create Credentials** > **OAuth Client ID**
+10. Select **Web application**
+11. Enter the URIs in **Authorized JavaScript origins** && **Authorized redirect URIs** (`http://localhost:3000`)
+12. Click on **Create**
+13. Save credentials (Client ID, Client secret)
+
+### Model Reusing
+
+In NextJS, APIs are serverless by default, meaning the backend is not always running, it only runs (setting-up backend, model-defining) when the API is being called. So, if the model is already created, then we must reuse it instead of creating it again.
+
+```javascript
+const UserSchema = new Schema({ email: String, username:String });
+const User = models.User || model('User', UserSchema);
+export default User;
+```
+
+### Next-Auth Configuration
+
+You need 3 variables to configure next-auth:
+
+- NEXTAUTH_URL = <http://localhost:PORT>
+- NEXTAUTH_URL_INTERNAL = <http://localhost:PORT>
+
+- NEXTAUTH_SECRET
+  - Go to [next-auth/configuration/options](https://next-auth.js.org/configuration/options#nextauth_secret)
+  - Copy the command
+  - Go to [cryptool](https://www.cryptool.org/en/cto/openssl/)
+  - Enter command and get the secret key
