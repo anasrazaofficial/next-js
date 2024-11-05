@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getProviders, signIn, signOut } from "next-auth/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+
 
 const Nav = () => {
-  const isUserLoggedIn = true;
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
+  const { data: session } = useSession();
 
 
   useEffect(() => {
@@ -31,12 +33,12 @@ const Nav = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden sm:flex">
-        {isUserLoggedIn ?
+        {session?.user ?
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">Create Prompt</Link>
             <button type="button" className="outline_btn" onClick={signOut}>Sign Out</button>
             <Link href="/profile">
-              <Image src="/assets/images/logo.svg" alt="Profile" width={37} height={37} className="rounded-full" />
+              <Image src={session?.user.image} alt="Profile" width={37} height={37} className="rounded-full" />
             </Link>
           </div>
           :
@@ -51,10 +53,10 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="flex sm:hidden relative">
-        {isUserLoggedIn ?
+        {session?.user ?
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               alt="Profile"
               width={37} height={37}
               className="rounded-full"
