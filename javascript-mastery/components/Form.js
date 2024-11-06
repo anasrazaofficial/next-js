@@ -18,7 +18,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             placeholder="Write your prompt here"
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
-            required />
+            required
+          />
         </label>
 
         <label>
@@ -30,7 +31,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             placeholder="#tag"
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            required />
+            required
+          />
         </label>
 
         <div className='flex-end mx-3 mb-5 gap-4'>
